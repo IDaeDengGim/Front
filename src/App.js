@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 
+// 페이지 임포트
+import MainPage from "./pages/main/Mainpage";
+import PickPage from "./pages/login/PickPage";
+
+// app에는 라우팅할 애들만 넣어놓기
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        {/* 메인페이지 */}
+        <Route exact path="/" element={<MainPage />} />
+        <Route exact path="/login/pick" element={<PickPage />} />
+      </Routes>
+    </>
   );
 }
 
