@@ -1,19 +1,27 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { selecKeyword } from "../../api/selecKeyword";
 
 const PickPage = () => {
+  const [keyword, setKeyword] = useState([]);
+
+  const GetSelecKeyword = async () => {
+    const res = await selecKeyword();
+    console.log(res.data);
+    setKeyword(res.data);
+  };
+
+  useEffect(() => {
+    GetSelecKeyword();
+  }, []);
+
   return (
     <Wrapper>
       <Title>당신의 취향을 선택해주세요</Title>
       <Container>
-        <Box>로맨스</Box>
-        <Box>로맨스</Box>
-        <Box>로맨스</Box>
-        <Box>로맨스</Box>
-        <Box>로맨스</Box>
-        <Box>로맨스</Box>
-        <Box>로맨스</Box>
-        <Box>로맨스</Box>
-        <Box>로맨스</Box>
+        {keyword?.map((el) => (
+          <Box key={el.index}>{el.name}</Box>
+        ))}
       </Container>
     </Wrapper>
   );

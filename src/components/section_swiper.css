@@ -14,7 +14,7 @@
 
 .section-Swiper .swiper-slide img {
   display: block;
-  width: 100%;
+  width: 60%;
   height: 100%;
   object-fit: cover;
 }

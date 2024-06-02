@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import styled from "styled-components";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -12,33 +12,37 @@ import poster1 from "../assets/괴물포스터.jpeg";
 
 const SectionPage = () => {
   return (
-    <div>
-      <Swiper slidesPerView={4} spaceBetween={50} className="section-Swiper">
+    <Wrapper>
+      <Swiper slidesPerView={4} spaceBetween={0} className="section-Swiper">
         <SwiperSlide>
-          <img src={poster1} style={{ marginLeft: "50px" }} />
+          <img src={poster1} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={poster1} style={{ marginLeft: "50px" }} />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <img src={poster1} style={{ hieght: "30px", marginLeft: "50px" }} />
+          <img src={poster1} />
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <img src={poster1} style={{ hieght: "30px", marginLeft: "50px" }} />
+          <img src={poster1} />
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <img src={poster1} style={{ hieght: "30px", marginLeft: "50px" }} />
+          <img src={poster1} />
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <img src={poster1} style={{ hieght: "30px", marginLeft: "50px" }} />
+          <img src={poster1} />
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <img src={poster1} />
         </SwiperSlide>
       </Swiper>
-    </div>
+    </Wrapper>
   );
 };
 
 export default SectionPage;
+
+const Wrapper = styled.div`
+  height: 300px;
+`;

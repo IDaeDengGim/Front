@@ -3,7 +3,7 @@ import Nav from "../../components/Nav";
 import SectionPage from "../../components/SectionPage";
 import { Navigate, useNavigate } from "react-router-dom";
 
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -16,6 +16,8 @@ import "./styles.css";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
+import { getMovie } from "../../api/getMovie";
+
 // 이미지 import
 import movie from "../../assets/영화 포스터.jpeg";
 import movie2 from "../../assets/포스터2.jpeg";
@@ -27,6 +29,18 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   const goInfo = () => {};
+
+  const [movie, setMovie] = useState([]);
+
+  const GetMovie = async () => {
+    const res = await getMovie();
+    console.log(res.data);
+    setMovie(res.data.slice(4));
+  };
+
+  useEffect(() => {
+    GetMovie();
+  }, []);
 
   return (
     <Container>
@@ -47,14 +61,14 @@ const MainPage = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src={movie} alt="poster" />
+          <img src={movie2} alt="poster" />
         </SwiperSlide>
         <SwiperSlide>
           {" "}
           <img src={movie2} alt="poster" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={movie} alt="poster" />
+          <img src={movie2} alt="poster" />
         </SwiperSlide>
         <SwiperSlide>
           {" "}
@@ -65,42 +79,25 @@ const MainPage = () => {
         <Section>
           <Title>지금 인기있는 영화</Title>
           <Poster>
-            <Item onClick={goInfo}>
-              <img
-                src={poster1}
-                alt="poster"
-                style={{ height: "200px", width: "150px", marginBottom: "7px" }}
-              />
-              <Name>괴물</Name>
-              <Info>아르헨티나 2021 | 65min</Info>
-            </Item>
-            <Item>
-              <img
-                src={poster1}
-                alt="poster"
-                style={{ height: "200px", width: "150px", marginBottom: "7px" }}
-              />
-              <Name>괴물</Name>
-              <Info>아르헨티나 2021 | 65min</Info>
-            </Item>
-            <Item>
-              <img
-                src={poster1}
-                alt="poster"
-                style={{ height: "200px", width: "150px", marginBottom: "7px" }}
-              />
-              <Name>괴물</Name>
-              <Info>아르헨티나 2021 | 65min</Info>
-            </Item>
-            <Item>
-              <img
-                src={poster1}
-                alt="poster"
-                style={{ height: "200px", width: "150px", marginBottom: "7px" }}
-              />
-              <Name>괴물</Name>
-              <Info>아르헨티나 2021 | 65min</Info>
-            </Item>
+            {movie?.map((el) => (
+              <Item>
+                <img
+                  src={el.img}
+                  alt="poster"
+                  style={{
+                    height: "200px",
+                    width: "150px",
+                    marginBottom: "7px",
+                    cursor: "pointer",
+                  }}
+                />
+
+                <Name>{el.title}</Name>
+                <Info>
+                  {el.grade} | {el.time}
+                </Info>
+              </Item>
+            ))}
           </Poster>
         </Section>
         <Section>
@@ -216,7 +213,7 @@ const Title = styled.div`
 `;
 
 const Section = styled.div`
-  height: 300px;
+  height: fixed 300px;
   border: 1px solid black;
   margin-top: 10px;
 `;
