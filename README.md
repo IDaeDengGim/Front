@@ -1,8 +1,6 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=100&section=header)
-
 ### 프론트
 
-| <img src="https://avatars.githubusercontent.com/u/105619531?v=4" width="200px" /> | --------------------------------------------------------------------------------- |
+<img src="https://avatars.githubusercontent.com/u/105619531?v=4" width="200px" /> 
 
 [김현수](https://github.com/SSSSSSu3834)
 
@@ -11,6 +9,10 @@
 ## 인디픽스(IndiePicks)
 
 인디영화를 좋아하는 사람들을 위해 선호 영화 선택 및 작품 키워드 추출을 통해 독립영화를 추천하는 플랫폼
+
+## 진행상황
+- mainPage 구현
+- loginPage keyword 선택 페이지 구현
 
 ### 🗂️ 프로젝트 폴더 구조
 
