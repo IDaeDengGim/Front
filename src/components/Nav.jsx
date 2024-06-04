@@ -31,11 +31,16 @@ const Container = styled.div`
 
 const Title = styled.div`
   font-size: 30px;
+  font-weight: 700;
   color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 50px;
 `;
 
 const Login = styled.div`
-  width: 100%;
   font-size: 20px;
   display: flex;
   justify-content: end;
@@ -43,4 +48,5 @@ const Login = styled.div`
   color: white;
   margin-right: 30px;
   cursor: pointer;
+  width: 10%;
 `;

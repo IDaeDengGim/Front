@@ -24,11 +24,15 @@ import movie2 from "../../assets/포스터2.jpeg";
 import poster1 from "../../assets/괴물포스터.jpeg";
 import poster2 from "../../assets/아가씨포스터.webp";
 import poster3 from "../../assets/나니아포스터.webp";
+import MovieInfo from "../../components/MovieInfo";
 
 const MainPage = () => {
   const navigate = useNavigate();
 
-  const goInfo = () => {};
+  const goInfo = (e, el) => {
+    const id = e.currentTarget.id;
+    navigate(`/movieInfo/:${id}`);
+  };
 
   const [movie, setMovie] = useState([]);
 
@@ -80,7 +84,7 @@ const MainPage = () => {
           <Title>지금 인기있는 영화</Title>
           <Poster>
             {movie?.map((el) => (
-              <Item>
+              <Item id={el.id} onClick={goInfo}>
                 <img
                   src={el.img}
                   alt="poster"
@@ -103,42 +107,25 @@ const MainPage = () => {
         <Section>
           <Title>00님의 취향 영화</Title>
           <Poster>
-            <Item onClick={goInfo}>
-              <img
-                src={poster2}
-                alt="poster"
-                style={{ height: "200px", width: "150px", marginBottom: "7px" }}
-              />
-              <Name>아가씨</Name>
-              <Info>아르헨티나 2021 | 65min</Info>
-            </Item>
-            <Item>
-              <img
-                src={poster2}
-                alt="poster"
-                style={{ height: "200px", width: "150px", marginBottom: "7px" }}
-              />
-              <Name>아가씨</Name>
-              <Info>아르헨티나 2021 | 65min</Info>
-            </Item>
-            <Item>
-              <img
-                src={poster2}
-                alt="poster"
-                style={{ height: "200px", width: "150px", marginBottom: "7px" }}
-              />
-              <Name>괴물</Name>
-              <Info>아르헨티나 2021 | 65min</Info>
-            </Item>
-            <Item>
-              <img
-                src={poster2}
-                alt="poster"
-                style={{ height: "200px", width: "150px", marginBottom: "7px" }}
-              />
-              <Name>괴물</Name>
-              <Info>아르헨티나 2021 | 65min</Info>
-            </Item>
+            {movie?.map((el) => (
+              <Item id={el.id} onClick={goInfo}>
+                <img
+                  src={el.img}
+                  alt="poster"
+                  style={{
+                    height: "200px",
+                    width: "150px",
+                    marginBottom: "7px",
+                    cursor: "pointer",
+                  }}
+                />
+
+                <Name>{el.title}</Name>
+                <Info>
+                  {el.grade} | {el.time}
+                </Info>
+              </Item>
+            ))}
           </Poster>
         </Section>
         <Section>
